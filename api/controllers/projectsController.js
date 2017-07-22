@@ -36,7 +36,7 @@ exports.updateProject = (req, res) => {
 
 exports.deleteProject = (req, res) => {
   Project.remove({
-      _id: req.params.id
+	  _id:  req.params.id 
     }, (err, Project) => {
       if (err)
 	res.send(err);
