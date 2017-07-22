@@ -1,23 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let BlogSchema = new Schema({
-  title: {
+  date: {
     type: String,
-    Required: 'Blog Name is required!'
   },
-  description: {
+  storyName: {
 	  type: String
   },
-  year: {
-	  type: String
-  },
-  pdfUrl: {
-	  type: String
-  },
-  url: {
-	  type: String
-  },
-  codeUrl: {
+  storyText: {
 	  type: String
   }
 });
