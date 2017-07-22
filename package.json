@@ -1,0 +1,11 @@
+{
+  "name": "projects",
+  "version": "0.0.1",
+  "description": "CRUD interface to Mongo for Shake SPA demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff Davies",
+  "license": "MIT"
+}
