@@ -1,7 +1,7 @@
 module.exports = (app) => {
   let blogList = require('../controllers/blogController');
   app.route('/blogs')
-    .get(blogList.getBlogs) ;
+    .get(blogList.getBlogs) 
     .post(blogList.createBlog);
   //app.route('/blogs/:blogId')
   //  .get(blogList.readBlog)
