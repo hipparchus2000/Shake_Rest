@@ -47,7 +47,7 @@ exports.updateLogin = (req, res) => {
     res.send(err);
   var urlArray = req.url.split('/');
   var id = urlArray[urlArray.length-1];
-  Login.findOneAndUpdate(id, req.body, { new: true }, (err, Login) => {
+  Login.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Login) => {
     if (err) 
       res.send(err);
     res.json(Login);

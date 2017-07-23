@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let BlogSchema = new Schema({
-  id: {
+  order: {
     type: String,
   },
   date: {

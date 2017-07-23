@@ -36,7 +36,7 @@ exports.updateBlog = (req, res) => {
     res.send(err);
   var urlArray = req.url.split('/');
   var id = urlArray[urlArray.length-1];
-  Blog.findOneAndUpdate(id, req.body, { new: true }, (err, Blog) => {
+  Blog.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Blog) => {
     if (err) 
       res.send(err);
     res.json(Blog);

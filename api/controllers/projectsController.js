@@ -7,7 +7,7 @@ exports.getProjects = (req, res) => {
     if (err)
       res.send(err);
     res.json(Project);
-  });
+  }).sort( { order: 1 } );
 };
 
 exports.readProject = (req, res) => {
@@ -39,7 +39,7 @@ exports.updateProject = (req, res) => {
     res.send(err);
   var urlArray = req.url.split('/');
   var id = urlArray[urlArray.length-1];
-  Project.findOneAndUpdate(id, req.body, { new: true }, (err, Project) => {
+  Project.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Project) => {
     if (err) 
       res.send(err);
     res.json(Project);
