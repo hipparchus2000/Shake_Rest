@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let ProjectSchema = new Schema({
+  id: {
+    type: String,
+  },
   title: {
     type: String,
     Required: 'Project Name is required!'
