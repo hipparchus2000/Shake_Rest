@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const Login = mongoose.model("Login");
 
 exports.getLogins = (req, res) => {
+  if (req.headers['token']!=apiToken)
+    res.send(err);
   Login.find({}, (err, Login) => {
     if (err)
       res.send(err);
@@ -33,6 +35,8 @@ exports.createLogin = (req, res) => {
 };
 
 exports.readLogin = (req, res) => {
+  if (req.headers['token']!=apiToken)
+    res.send(err);
   var urlArray = req.url.split('/');
   var id = urlArray[urlArray.length-1];
   Login.findById(id, (err, Login) => {

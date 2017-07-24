@@ -6,6 +6,9 @@ let LoginSchema = new Schema({
   },
   password: {
 	  type: String
+  },
+  admin: {
+	  type: Boolean
   }
 });
 module.exports = mongoose.model('Login', LoginSchema);
