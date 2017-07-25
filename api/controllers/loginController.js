@@ -69,8 +69,17 @@ exports.createLogin = (req, res) => {
 };
 
 exports.readLogin = (req, res) => {
-  if (req.headers['token']!=apiToken)
-    res.send(err);
+  if(req.headers['jwt']!=null) {
+	var json = CryptoJS.enc.Base64.parse(req.headers['jwt']);
+	res.send(json);
+	//var signature = CryptoJS.HmacSHA256(base64Header + "." + base64Payload , apiToken ).toString(CryptoJS.enc.Base64);
+	//if(signature != base64Sign) {
+        //  res.send({ "error":"error" });
+	//}
+  } else {
+    if (req.headers['token']!=apiToken)
+      res.send({"loginSuccess":false});
+  };
   var urlArray = req.url.split('/');
   var id = urlArray[urlArray.length-1];
   Login.findById(id, (err, Login) => {
