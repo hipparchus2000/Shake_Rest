@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
+
 let LoginSchema = new Schema({
   username: {
     type: String,
@@ -9,7 +11,11 @@ let LoginSchema = new Schema({
   },
   admin: {
 	  type: Boolean
+  },
+  roles: { 
+	  type: String 
   }
+  
 });
 module.exports = mongoose.model('Login', LoginSchema);
 

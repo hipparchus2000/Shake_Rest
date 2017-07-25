@@ -1,5 +1,7 @@
 module.exports = (app) => {
   let loginList = require('../controllers/loginController');
+  app.route('/auth')
+    .post(loginList.login);
   app.route('/login')
     .get(loginList.getLogins) 
     .post(loginList.createLogin);
