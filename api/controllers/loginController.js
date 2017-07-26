@@ -40,6 +40,7 @@ function makeJwt(data,secret) {
 }
 
 exports.login = (req, res) => {
+    console.log(JSON.stringify(req.body));
 	let username = req.body.username;
     let password = req.body.password;
 	Login.findOne({ "username":username, "password":password}, (err, Login) => {
