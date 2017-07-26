@@ -40,22 +40,18 @@ function makeJwt(data,secret) {
 }
 
 exports.login = (req, res) => {
-	let username = req.body["username"];
-	Login.findOne({ "username":username}, (err, Login) => {
+	let username = req.body.username;
+    let password = req.body.password;
+	Login.findOne({ "username":username, "password":password}, (err, Login) => {
 		if (err)
 			res.send(err);
-		let password = req.body["password"];
-		if (Login.password == password) {
-			let data = {
-				"admin" : Login.admin,
-				"roles" : Login.roles,
-				"username": username
-				};
-			var signedToken = makeJwt(data,apiToken);	
-			res.json({"loginSuccess": true, "token": signedToken, roles : Login.roles });
-		} else {
-			res.json({"loginSuccess":false});
-		}
+		let data = {
+			"admin" : Login.admin,
+			"roles" : Login.roles,
+			"username": username
+			};
+		var signedToken = makeJwt(data,apiToken);	
+		res.json({"loginSuccess": true, "token": signedToken, roles : Login.roles });
 	});
 };
  
