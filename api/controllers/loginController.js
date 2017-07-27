@@ -43,9 +43,16 @@ exports.login = (req, res) => {
     console.log(JSON.stringify(req.body));
 	let username = req.body.username;
     let password = req.body.password;
+	let emptyData = {
+		"admin" : false,
+		"roles" : "",
+		"username" : "guest"
+	};
 	Login.findOne({ "username":username, "password":password}, (err, Login) => {
-		if (err)
-			res.send(err);
+		if (err||Login == null) {
+			res.send(emptyData);
+			return;
+		};
 		let data = {
 			"admin" : Login.admin,
 			"roles" : Login.roles,
