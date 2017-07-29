@@ -1,9 +1,7 @@
 const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Login = mongoose.model("Login");
-import {checkRequestForValidAuth} from 'shakeAuth';
-import {makeJwt} from 'shakeAuth';
-import {base64url} from 'shakeAuth';
+const ShakeAuth = require("shakeAuth");
 
 
 exports.getLogins = (req, res) => {
@@ -37,7 +35,7 @@ exports.login = (req, res) => {
 			"roles" : Login.roles,
 			"username": username
 			};
-		var signedToken = makeJwt(data,apiToken);	
+		var signedToken = ShakeAuth.makeJwt(data,apiToken);	
 		res.json({
 			"loginSuccess": true, 
 			"admin": Login.admin,
@@ -61,7 +59,7 @@ exports.createLogin = (req, res) => {
 };
 
 exports.readLogin = (req, res) => {
-    if (checkRequestForValidAuth(req,true,null)==false) {
+    if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
 		res.json({ authorizationFailed: true });
 	};
 	var urlArray = req.url.split('/');

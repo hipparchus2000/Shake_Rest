@@ -5,7 +5,7 @@ const CryptoJS = require("crypto-js");
 var jwt_decode = require('jwt-decode');
 
 
-export function base64url(source) {
+function base64url(source) {
 	encodedSource = CryptoJS.enc.Base64.stringify(source);
 	encodedSource = encodedSource.replace(/=+$/, '');
 	encodedSource = encodedSource.replace(/\+/g, '-');
@@ -14,7 +14,7 @@ export function base64url(source) {
 }
 
 
-export function checkRequestForValidAuth(req,requiresAdmin,requiredRole) {
+exports.checkRequestForValidAuth(req,requiresAdmin,requiredRole) {
 	var presentedToken = req.headers['jwt'];
 	if(presentedToken!=null) {
 		var decoded = jwt_decode(presentedToken);
@@ -41,7 +41,7 @@ export function checkRequestForValidAuth(req,requiresAdmin,requiredRole) {
 	return true;
 }
 
-export function makeJwt(data,secret) { 
+exports.makeJwt(data,secret) { 
 	let header = {
 		"alg": "HS256",
 		"typ": "JWT"
