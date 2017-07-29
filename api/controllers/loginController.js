@@ -1,7 +1,7 @@
 const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Login = mongoose.model("Login");
-const ShakeAuth = require("shakeAuth");
+const ShakeAuth = require("./shakeAuth");
 
 
 exports.getLogins = (req, res) => {
