@@ -10,7 +10,11 @@ exports.getLogins = (req, res) => {
 	Login.find({}, (err, Login) => {
 		if (err)
 			res.send(err);
-		res.json(Login);
+		let loginsWithoutPassword = Login;
+		loginsWithoutPassword.forEach(function(item,index) {
+			loginsWithoutPassword[index].password="xxxx";
+		});
+		res.json(loginsWithoutPassword);
 	});
 };
 
