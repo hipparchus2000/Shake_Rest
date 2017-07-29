@@ -46,7 +46,7 @@ exports.makeJwt = (data,secret) => {
 	return makeJwtFunc(data,secret);
 }
 
-function makeJwtFunc = (data,secret) => { 
+function makeJwtFunc(data,secret) { 
 	let header = {
 		"alg": "HS256",
 		"typ": "JWT"
