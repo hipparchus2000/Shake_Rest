@@ -12,8 +12,11 @@ exports.getBlogs = (req, res) => {
 
 exports.createBlog = (req, res) => {
 	let newBlog = new Blog(req.body);
-	if (req.headers['token']!=apiToken)
-		res.send(err);
+	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
+	//if (req.headers['token']!=apiToken)
+	//	res.send(err);
 	newBlog.save( (err, Blog) => {
 		if (err)
 			res.send(err);
