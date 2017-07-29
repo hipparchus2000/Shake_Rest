@@ -44,6 +44,7 @@ exports.login = (req, res) => {
 	let username = req.body.username;
     let password = req.body.password;
 	let emptyData = {
+		"loginSuccess": false, 
 		"admin" : false,
 		"roles" : "",
 		"username" : "guest"
@@ -59,7 +60,13 @@ exports.login = (req, res) => {
 			"username": username
 			};
 		var signedToken = makeJwt(data,apiToken);	
-		res.json({"loginSuccess": true, "token": signedToken, roles : Login.roles });
+		res.json({
+			"loginSuccess": true, 
+			"admin": Login.admin,
+			"roles" : Login.roles,
+			"username" : username,
+			"token": signedToken, 
+			});
 	});
 };
  
