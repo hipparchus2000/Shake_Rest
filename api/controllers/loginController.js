@@ -1,12 +1,12 @@
-const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Login = mongoose.model("Login");
 const ShakeAuth = require("./shakeAuth");
 
 
 exports.getLogins = (req, res) => {
-	if (req.headers['token']!=apiToken)
-		res.send(err);
+    if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	Login.find({}, (err, Login) => {
 		if (err)
 			res.send(err);
@@ -49,8 +49,9 @@ exports.login = (req, res) => {
 
 exports.createLogin = (req, res) => {
 	let newLogin = new Login(req.body);
-	if (req.headers['token']!=apiToken)
-		res.send(err);
+    if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	newLogin.save( (err, Login) => {
 		if (err)
 			res.send(err);
@@ -72,8 +73,9 @@ exports.readLogin = (req, res) => {
 };
 
 exports.updateLogin = (req, res) => {
-	if (req.headers['token']!=apiToken)
-		res.send(err);
+    if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	Login.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Login) => {
@@ -84,8 +86,9 @@ exports.updateLogin = (req, res) => {
 };
 
 exports.deleteLogin = (req, res) => {
-	if (req.headers['token']!=apiToken)
-		res.send(err) ;
+    if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	console.log('req param id = ',id);

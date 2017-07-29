@@ -1,4 +1,3 @@
-const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Project = mongoose.model("Projects");
 const ShakeAuth = require("./shakeAuth");
@@ -23,8 +22,9 @@ exports.readProject = (req, res) => {
 
 
 exports.createProject = (req, res) => {
-	if (req.headers['token'] !=apiToken)
-		res.send(err);
+	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	let newProject = new Project(req.body);
@@ -36,8 +36,9 @@ exports.createProject = (req, res) => {
 };
 
 exports.updateProject = (req, res) => {
-	if (req.headers['token'] !=apiToken)
-		res.send(err);
+	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	Project.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Project) => {
@@ -48,8 +49,9 @@ exports.updateProject = (req, res) => {
 };
 
 exports.deleteProject = (req, res) => {
-	if (req.headers['token'] !=apiToken)
-		res.send(err);
+	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	Project.remove({
