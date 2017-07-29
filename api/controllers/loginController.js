@@ -1,16 +1,9 @@
 const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Login = mongoose.model("Login");
-const CryptoJS = require("crypto-js");
-var jwt_decode = require('jwt-decode');
-
-function base64url(source) {
-	encodedSource = CryptoJS.enc.Base64.stringify(source);
-	encodedSource = encodedSource.replace(/=+$/, '');
-	encodedSource = encodedSource.replace(/\+/g, '-');
-	encodedSource = encodedSource.replace(/\//g, '_');
-	return encodedSource;
-}
+import {checkRequestForValidAuth} from 'shakeAuth';
+import {makeJwt} from 'shakeAuth';
+import {base64url} from 'shakeAuth';
 
 
 exports.getLogins = (req, res) => {
@@ -23,21 +16,6 @@ exports.getLogins = (req, res) => {
 	});
 };
 
-function makeJwt(data,secret) { 
-	let header = {
-		"alg": "HS256",
-		"typ": "JWT"
-	};
-	let stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
-	let encodedHeader = base64url(stringifiedHeader);
-	let stringifiedData = CryptoJS.enc.Utf8.parse(JSON.stringify(data));
-	let encodedData = base64url(stringifiedData);
-	let token = encodedHeader + "." + encodedData;
-	let tokenHash = CryptoJS.HmacSHA256(token, secret);
-	b64tokenHash = base64url(tokenHash);
-	let signedToken = token + "." + b64tokenHash;
-	return signedToken;
-}
 
 exports.login = (req, res) => {
     console.log(JSON.stringify(req.body));
@@ -83,26 +61,8 @@ exports.createLogin = (req, res) => {
 };
 
 exports.readLogin = (req, res) => {
-    var presentedToken = req.headers['jwt'];
-	if(presentedToken!=null) {
-		var decoded = jwt_decode(presentedToken);
-        if(decoded.admin!=true) {
-			console.log("jwt protected resource usage attempted but token does not have required claims");
-			res.send({});
-			return;
-		}
-		var signedToken = makeJwt(decoded,apiToken);	
-        if (signedToken != presentedToken) {
-			console.log("jwt presented but wasn't authentic");
-			res.send({});
-			return;
-		}
-	} else {
-        console.log("no jwt so looking for apiToken");
-		if (req.headers['token']!=apiToken) {
-			res.send({"loginSuccess":false});
-			return;
-		}
+    if (checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
