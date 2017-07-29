@@ -21,7 +21,7 @@ exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 			console.log("jwt protected resource usage attempted but token does not have required claims");
 			return false;
 		}
-		var signedToken = makeJwt(decoded,apiToken);	
+		var signedToken = makeJwtFunc(decoded,apiToken);	
         if (signedToken != presentedToken) {
 			console.log("jwt presented but wasn't authentic");
 			return false;
@@ -42,7 +42,11 @@ exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 	return true;
 }
 
-exports.makeJwt = (data,secret) => { 
+exports.makeJwt = (data,secret) => {
+	return makeJwtFunc(data,secret);
+}
+
+function makeJwtFunc = (data,secret) => { 
 	let header = {
 		"alg": "HS256",
 		"typ": "JWT"
