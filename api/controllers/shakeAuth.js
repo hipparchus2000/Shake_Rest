@@ -27,13 +27,15 @@ exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 			return false;
 		}
 		if(requiredRoll!=null) {
-			if(decoded.roles.includes(requiredRole)==false)
+			if(decoded.roles.includes(requiredRole)==false) {
+				console.log("jwt presented but didn't contain required role");
 				return false;
+			}
 		}
 	} else {
         console.log("no jwt so looking for apiToken");
 		if (req.headers['token']!=apiToken) {
-			res.send({"loginSuccess":false});
+			console.log("no valid jwt and no valid apiToken");
 			return false;
 		}
 	};
