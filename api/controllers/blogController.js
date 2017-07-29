@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Blog = mongoose.model("Blogs");
 const ShakeAuth = require("./shakeAuth");
+const editorRole = "blog-editor";
 
 exports.getBlogs = (req, res) => {
 	Blog.find({}, (err, Blog) => {
@@ -12,7 +13,7 @@ exports.getBlogs = (req, res) => {
 
 exports.createBlog = (req, res) => {
 	let newBlog = new Blog(req.body);
-	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 	};
 	newBlog.save( (err, Blog) => {
@@ -33,7 +34,7 @@ exports.readBlog = (req, res) => {
 };
 
 exports.updateBlog = (req, res) => {
-	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 	};
 	var urlArray = req.url.split('/');
@@ -46,7 +47,7 @@ exports.updateBlog = (req, res) => {
 };
 
 exports.deleteBlog = (req, res) => {
-	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 	};
 	var urlArray = req.url.split('/');

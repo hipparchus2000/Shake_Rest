@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Project = mongoose.model("Projects");
 const ShakeAuth = require("./shakeAuth");
+const editorRole = "project-editor";
 
 exports.getProjects = (req, res) => {
 	Project.find({}, (err, Project) => {
@@ -22,7 +23,7 @@ exports.readProject = (req, res) => {
 
 
 exports.createProject = (req, res) => {
-	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 	};
 	var urlArray = req.url.split('/');
@@ -36,7 +37,7 @@ exports.createProject = (req, res) => {
 };
 
 exports.updateProject = (req, res) => {
-	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 	};
 	var urlArray = req.url.split('/');
@@ -49,7 +50,7 @@ exports.updateProject = (req, res) => {
 };
 
 exports.deleteProject = (req, res) => {
-	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 	};
 	var urlArray = req.url.split('/');
