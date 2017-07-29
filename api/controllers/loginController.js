@@ -72,7 +72,9 @@ exports.readLogin = (req, res) => {
 	Login.findById(id, (err, Login) => {
 		if (err)
 			res.send(err);
-		res.json(Login);
+		var newLogin = Login;
+		newLogin.password = "xxxxx";
+		res.json(newLogin);
 	});
 };
 
