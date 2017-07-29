@@ -1,6 +1,7 @@
 const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Project = mongoose.model("Projects");
+const ShakeAuth = require("./shakeAuth");
 
 exports.getProjects = (req, res) => {
 	Project.find({}, (err, Project) => {

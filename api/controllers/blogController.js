@@ -1,6 +1,7 @@
 const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Blog = mongoose.model("Blogs");
+const ShakeAuth = require("./shakeAuth");
 
 exports.getBlogs = (req, res) => {
 	Blog.find({}, (err, Blog) => {
