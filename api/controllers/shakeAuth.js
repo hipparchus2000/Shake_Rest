@@ -43,7 +43,7 @@ exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 }
 
 exports.makeJwt = (data,secret) => {
-	return makeJwtFunc(data,secret);
+	return makeJwtFunc(data,apiToken);
 }
 
 function makeJwtFunc(data,secret) { 

@@ -39,7 +39,7 @@ exports.login = (req, res) => {
 			"roles" : Login.roles,
 			"username": username
 			};
-		var signedToken = ShakeAuth.makeJwt(data,apiToken);	
+		var signedToken = ShakeAuth.makeJwt(data);	
 		res.json({
 			"loginSuccess": true, 
 			"admin": Login.admin,
