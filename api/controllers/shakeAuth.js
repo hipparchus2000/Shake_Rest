@@ -13,8 +13,7 @@ function base64url(source) {
 	return encodedSource;
 }
 
-
-exports.checkRequestForValidAuth(req,requiresAdmin,requiredRole) {
+exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 	var presentedToken = req.headers['jwt'];
 	if(presentedToken!=null) {
 		var decoded = jwt_decode(presentedToken);
@@ -41,7 +40,7 @@ exports.checkRequestForValidAuth(req,requiresAdmin,requiredRole) {
 	return true;
 }
 
-exports.makeJwt(data,secret) { 
+exports.makeJwt = (data,secret) => { 
 	let header = {
 		"alg": "HS256",
 		"typ": "JWT"
