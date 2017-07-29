@@ -26,7 +26,7 @@ exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 			console.log("jwt presented but wasn't authentic");
 			return false;
 		}
-		if(requiredRoll!=null) {
+		if(requiredRole!=null) {
 			if(decoded.roles.includes(requiredRole)==false) {
 				console.log("jwt presented but didn't contain required role");
 				return false;
