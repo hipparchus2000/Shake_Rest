@@ -1,4 +1,3 @@
-const apiToken=process.env.token;
 const mongoose = require("mongoose");
 const Blog = mongoose.model("Blogs");
 const ShakeAuth = require("./shakeAuth");
@@ -16,8 +15,6 @@ exports.createBlog = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
 		res.json({ authorizationFailed: true });
 	};
-	//if (req.headers['token']!=apiToken)
-	//	res.send(err);
 	newBlog.save( (err, Blog) => {
 		if (err)
 			res.send(err);
@@ -36,8 +33,9 @@ exports.readBlog = (req, res) => {
 };
 
 exports.updateBlog = (req, res) => {
-	if (req.headers['token']!=apiToken)
-		res.send(err);
+	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	Blog.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Blog) => {
@@ -48,8 +46,9 @@ exports.updateBlog = (req, res) => {
 };
 
 exports.deleteBlog = (req, res) => {
-	if (req.headers['token']!=apiToken)
-		res.send(err) ;
+	if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	console.log('req param id = ',id);
