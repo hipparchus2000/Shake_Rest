@@ -10,6 +10,8 @@ const Project = require("./api/models/projectsModel");
 const Blog = require ("./api/models/blogsModel");
 const Task =require ("./api/models/tasksModel");
 const Kanbanslot =require ("./api/models/kanbanslotsModel");
+const Bank =require ("./api/models/bankModel");
+const Bankcategory =require ("./api/models/bankcategoryModel");
 
 const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
@@ -25,6 +27,8 @@ let projectRoutes = require("./api/routes/projectsRoute");
 let blogRoutes = require("./api/routes/blogRoute");
 let taskRoutes = require("./api/routes/taskRoute");
 let kanbanslotRoutes = require("./api/routes/kanbanslotRoute");
+let bankRoutes = require("./api/routes/bankRoute");
+let bankcategoryRoutes = require("./api/routes/bankcategoryRoute");
 
 // register our routes
 loginRoutes(app);
@@ -32,6 +36,8 @@ projectRoutes(app);
 blogRoutes(app);
 taskRoutes(app);
 kanbanslotRoutes(app);
+bankRoutes(app);
+bankcategoryRoutes(app);
 
 app.listen(port); 
 console.log('App running on ' + port);
