@@ -1,16 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let KanbanslotSchema = new Schema({
-	order: {
-		type: String,
-	},
-	date: {
-		type: String,
-	},
-	storyName: {
+	slotOrder: {
 		type: String
 	},
-	storyText: {
+	slotName: {
 		type: String
 	}
 });
