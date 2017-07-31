@@ -34,18 +34,23 @@ exports.login = (req, res) => {
 			res.send(emptyData);
 			return;
 		};
+		let oneHour = 1000*3600;
+		let expiry = Date.now()+oneHour*12;
 		let data = {
+			"loginSuccess": true,
 			"admin" : Login.admin,
 			"roles" : Login.roles,
-			"username": username
+			"username" : username,
+			"expiry" : expiry
 			};
-		var signedToken = ShakeAuth.makeJwt(data);	
+		var signedToken = ShakeAuth.makeJwt(data);
 		res.json({
 			"loginSuccess": true, 
 			"admin": Login.admin,
 			"roles" : Login.roles,
 			"username" : username,
-			"token": signedToken, 
+			"expiry" : expiry,
+			"token": signedToken,
 			});
 	});
 };

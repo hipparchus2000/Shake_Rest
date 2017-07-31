@@ -17,6 +17,10 @@ exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 	var presentedToken = req.headers['jwt'];
 	if(presentedToken!=null) {
 		var decoded = jwt_decode(presentedToken);
+		if(decoded.expiry ==null || decoded.expiry < Date.now()) {
+			console.log("jwt expired");
+			return false;
+		}
         if(requiresAdmin && (decoded.admin!=true)) {
 			console.log("jwt protected resource usage attempted but token does not have required claims");
 			return false;
