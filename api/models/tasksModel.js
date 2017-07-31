@@ -13,6 +13,10 @@ let TaskSchema = new Schema({
 	storyText: {
 		type: String
 	}
+	storySlot: {
+		type: String
+	}
+	
 });
 module.exports = mongoose.model('Tasks', TaskSchema);
 
