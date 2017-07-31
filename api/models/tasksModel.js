@@ -12,7 +12,7 @@ let TaskSchema = new Schema({
 	},
 	storyText: {
 		type: String
-	}
+	},
 	storySlot: {
 		type: String
 	}
