@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Task = mongoose.model("Tasks");
+const Slot = mongoose.model("Kanbanslots");
 const ShakeAuth = require("./shakeAuth");
 const editorRole = "task-editor";
 
@@ -7,7 +8,12 @@ exports.getTasks = (req, res) => {
 	Task.find({}, (err, Task) => {
 		if (err)
 			res.send(err);
-		res.json(Task);
+		Slot.find({}), (err, Slot) => {
+			if (err)
+				res.send(err);
+			res.json({slots:Slot, tasks:Task});		
+		}
+		
 	});
 };
 
