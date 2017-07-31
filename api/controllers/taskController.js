@@ -8,12 +8,7 @@ exports.getTasks = (req, res) => {
 	Task.find({}, (err, Task) => {
 		if (err)
 			res.send(err);
-		Slot.find({}), (err, Slot) => {
-			if (err)
-				res.send(err);
-			res.json({slots:Slot, tasks:Task});		
-		}
-		
+		res.json(Task);		
 	});
 };
 
