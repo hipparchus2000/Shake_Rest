@@ -5,9 +5,10 @@ const port = process.env.PORT || 13001;
 const mongoose = require("mongoose");
 
 //schema
+const Login =require ("./api/models/loginModel");
 const Project = require("./api/models/projectsModel");
 const Blog = require ("./api/models/blogsModel");
-const Login =require ("./api/models/loginModel");
+const Task =require ("./api/models/tasksModel");
 
 const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
@@ -18,14 +19,16 @@ app.use(bodyParser.json());
 var cors = require('cors');
 
 app.use(cors({origin: 'http://www.talkisbetter.com'}));
+let loginRoutes = require("./api/routes/loginRoute");
 let projectRoutes = require("./api/routes/projectsRoute");
 let blogRoutes = require("./api/routes/blogRoute");
-let loginRoutes = require("./api/routes/loginRoute");
+let taskRoutes = require("./api/routes/taskRoute");
 
 // register our routes
+loginRoutes(app);
 projectRoutes(app);
 blogRoutes(app);
-loginRoutes(app);
+taskRoutes(app);
 
 app.listen(port); 
 console.log('App running on ' + port);
