@@ -22,7 +22,7 @@ app.use(cors({origin: 'http://www.talkisbetter.com'}));
 let loginRoutes = require("./api/routes/loginRoute");
 let projectRoutes = require("./api/routes/projectsRoute");
 let blogRoutes = require("./api/routes/blogRoute");
-let taskRoutes = require("./api/routes/taskRoute");
+//let taskRoutes = require("./api/routes/taskRoute");
 
 // register our routes
 loginRoutes(app);
