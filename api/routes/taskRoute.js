@@ -1,12 +1,12 @@
 module.exports = (app) => {
-	let taskList = require('../controllers/taskController');
+	let Task = require('../controllers/taskController');
 	app.route('/tasks')
-		.get(taskList.gettasks) 
-		.post(taskList.createtask);
+		.get(Task.getBlogs) 
+		.post(Task.createBlog);
 	app.route('/tasks/:taskId')
-		.get(taskList.readtask)
-		.put(taskList.updatetask)
-		.delete(taskList.deletetask);
+		.get(Task.readBlog)
+		.put(Task.updateBlog)
+		.delete(Task.deleteBlog);
 }
 
 
