@@ -28,7 +28,7 @@ let blogRoutes = require("./api/routes/blogRoute");
 loginRoutes(app);
 projectRoutes(app);
 blogRoutes(app);
-taskRoutes(app);
+//taskRoutes(app);
 
 app.listen(port); 
 console.log('App running on ' + port);
