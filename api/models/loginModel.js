@@ -14,7 +14,15 @@ let LoginSchema = new Schema({
 	},
 	roles: { 
 		type: String 
+	},
+	expiry: {
+		type: String
+	},
+	_id: {
+		type: String
 	}
+	
+	
 	
 });
 module.exports = mongoose.model('Login', LoginSchema);
