@@ -7,6 +7,7 @@ const editorRole = "bankcategory-editor";
 exports.getBankcategorys = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	Bankcategory.find({ "userId": userId }, (err, Bankcategory) => {
 		if (err)
@@ -19,6 +20,7 @@ exports.createBankcategory = (req, res) => {
 	let newBankcategory = new Bankcategory(req.body);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	newBankcategory.save( (err, Bankcategory) => {
 		if (err)
@@ -30,6 +32,7 @@ exports.createBankcategory = (req, res) => {
 exports.readBankcategory = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
@@ -43,6 +46,7 @@ exports.readBankcategory = (req, res) => {
 exports.updateBankcategory = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
@@ -56,6 +60,7 @@ exports.updateBankcategory = (req, res) => {
 exports.deleteBankcategory = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
