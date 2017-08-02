@@ -18,7 +18,10 @@ exports.getBanks = (req, res) => {
 
 exports.createBank = (req, res) => {
 	let newBank = new Bank(req);
-	newBank.userId = ShakeAuth.getUserId(req);
+	if(newBank.userId != ShakeAuth.getUserId(req)) {
+		res.json({ authorizationFailed: true });
+		return;
+	}
 	console.log(newBank);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
