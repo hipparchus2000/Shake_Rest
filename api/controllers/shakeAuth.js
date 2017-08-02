@@ -13,7 +13,7 @@ function base64url(source) {
 	return encodedSource;
 }
 
-exports.getUserId(req) {
+exports.getUserId = (req) => {
 	var presentedToken = req.headers['jwt'];
 	var decoded = jwt_decode(presentedToken);
 	return decoded.userId;
