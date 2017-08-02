@@ -31,6 +31,7 @@ exports.login = (req, res) => {
 		"username" : "guest"
 	};
 	Login.findOne({ "username":username, "password":password}, (err, Login) => {
+		console.log("login: user record found");
 		if (err||Login == null) {
 			res.send(emptyData);
 			return;
