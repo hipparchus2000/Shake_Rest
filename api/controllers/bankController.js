@@ -9,7 +9,7 @@ exports.getBanks = (req, res) => {
 		res.json({ authorizationFailed: true });
 		return;
 	};
-	Bank.find({}, (err, Bank) => {
+	Bank.find({ userId: ShakeAuth.getUserId(req.body) }, (err, Bank) => {
 		if (err)
 			res.send(err);
 		res.json(Bank);		
@@ -18,6 +18,7 @@ exports.getBanks = (req, res) => {
 
 exports.createBank = (req, res) => {
 	let newBank = new Bank(req.body);
+	newBank.userId = ShakeAuth.getUserId(req.body);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
@@ -50,6 +51,7 @@ exports.updateBank = (req, res) => {
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
+	req.body.userId = ShakeAuth.getUserId(req.body);
 	Bank.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Bank) => {
 		if (err) 
 			res.send(err);
@@ -66,7 +68,8 @@ exports.deleteBank = (req, res) => {
 	var id = urlArray[urlArray.length-1];
 	console.log('req param id = ',id);
 	Bank.remove({
-		_id: id
+		_id: id,
+		userId: ShakeAuth.getUserId(req.body)
 		}, (err, Bank) => {
 			if (err)
 	res.send(err);

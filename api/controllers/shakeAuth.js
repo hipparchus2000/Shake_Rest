@@ -13,6 +13,12 @@ function base64url(source) {
 	return encodedSource;
 }
 
+exports.getUserId(req) {
+	var presentedToken = req.headers['jwt'];
+	var decoded = jwt_decode(presentedToken);
+	return decoded.userId;
+}
+
 exports.checkRequestForValidAuth = (req,requiresAdmin,requiredRole) => {
 	var presentedToken = req.headers['jwt'];
 	if(presentedToken!=null) {

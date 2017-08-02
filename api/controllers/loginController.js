@@ -42,7 +42,7 @@ exports.login = (req, res) => {
 			"admin" : Login.admin,
 			"roles" : Login.roles,
 			"username" : username,
-			"id" : Login._id,
+			"userId" : Login._id,
 			"expiry" : expiry
 			};
 		var signedToken = ShakeAuth.makeJwt(data);
@@ -51,7 +51,7 @@ exports.login = (req, res) => {
 			"admin": Login.admin,
 			"roles" : Login.roles,
 			"username" : username,
-			"id" : Login._id,
+			"userId" : Login._id,
 			"expiry" : expiry,
 			"token": signedToken,
 			});
