@@ -15,6 +15,7 @@ exports.createBlog = (req, res) => {
 	let newBlog = new Blog(req.body);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;		
 	};
 	newBlog.save( (err, Blog) => {
 		if (err)
@@ -36,6 +37,7 @@ exports.readBlog = (req, res) => {
 exports.updateBlog = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
@@ -49,6 +51,7 @@ exports.updateBlog = (req, res) => {
 exports.deleteBlog = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];

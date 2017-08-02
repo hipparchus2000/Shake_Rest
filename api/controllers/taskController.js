@@ -16,6 +16,7 @@ exports.createTask = (req, res) => {
 	let newTask = new Task(req.body);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	newTask.save( (err, Task) => {
 		if (err)
@@ -37,6 +38,7 @@ exports.readTask = (req, res) => {
 exports.updateTask = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
@@ -50,6 +52,7 @@ exports.updateTask = (req, res) => {
 exports.deleteTask = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];

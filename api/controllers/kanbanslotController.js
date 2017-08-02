@@ -15,6 +15,7 @@ exports.createKanbanslot = (req, res) => {
 	let newKanbanslot = new Kanbanslot(req.body);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	newKanbanslot.save( (err, Kanbanslot) => {
 		if (err)
@@ -36,7 +37,8 @@ exports.readKanbanslot = (req, res) => {
 exports.updateKanbanslot = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
-	};
+		return;
+		};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	Kanbanslot.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Kanbanslot) => {
@@ -49,6 +51,7 @@ exports.updateKanbanslot = (req, res) => {
 exports.deleteKanbanslot = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];

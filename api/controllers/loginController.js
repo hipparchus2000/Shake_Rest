@@ -6,6 +6,7 @@ const ShakeAuth = require("./shakeAuth");
 exports.getLogins = (req, res) => {
     if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	Login.find({}, (err, Login) => {
 		if (err)
@@ -62,6 +63,7 @@ exports.createLogin = (req, res) => {
 	let newLogin = new Login(req.body);
     if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	newLogin.save( (err, Login) => {
 		if (err)
@@ -73,6 +75,7 @@ exports.createLogin = (req, res) => {
 exports.readLogin = (req, res) => {
     if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
@@ -88,6 +91,7 @@ exports.readLogin = (req, res) => {
 exports.updateLogin = (req, res) => {
     if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
@@ -101,6 +105,7 @@ exports.updateLogin = (req, res) => {
 exports.deleteLogin = (req, res) => {
     if (ShakeAuth.checkRequestForValidAuth(req,true,null)==false) {
 		res.json({ authorizationFailed: true });
+		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
