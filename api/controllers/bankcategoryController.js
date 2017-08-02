@@ -5,7 +5,10 @@ const ShakeAuth = require("./shakeAuth");
 const editorRole = "bankcategory-editor";
 
 exports.getBankcategorys = (req, res) => {
-	Bankcategory.find({}, (err, Bankcategory) => {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
+		res.json({ authorizationFailed: true });
+	};
+	Bankcategory.find({ "userId": userId }, (err, Bankcategory) => {
 		if (err)
 			res.send(err);
 		res.json(Bankcategory);		
@@ -25,6 +28,9 @@ exports.createBankcategory = (req, res) => {
 };
 
 exports.readBankcategory = (req, res) => {
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
+		res.json({ authorizationFailed: true });
+	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	Bankcategory.findById(id, (err, Bankcategory) => {
