@@ -46,7 +46,9 @@ exports.login = (req, res) => {
 			"userId" : Login._id,
 			"expiry" : expiry
 			};
+		console.log(data);
 		var signedToken = ShakeAuth.makeJwt(data);
+		console.log(data);
 		res.json({
 			"loginSuccess": true, 
 			"admin": Login.admin,

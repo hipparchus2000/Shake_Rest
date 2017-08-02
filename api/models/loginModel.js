@@ -17,9 +17,6 @@ let LoginSchema = new Schema({
 	},
 	expiry: {
 		type: String
-	},
-	_id: {
-		type: String
 	}
 	
 	
