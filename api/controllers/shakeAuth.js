@@ -15,6 +15,7 @@ function base64url(source) {
 
 exports.getUserId = (req) => {
 	var presentedToken = req.headers['jwt'];
+	console.log(presentedToken);
 	var decoded = jwt_decode(presentedToken);
 	console.log(decoded);
 	return decoded.userId;
