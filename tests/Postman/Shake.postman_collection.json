@@ -1,0 +1,707 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Shake",
+		"_postman_id": "eb2fc212-9ef7-68ca-9d8d-57e5675cf69b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "blogs",
+			"description": "",
+			"item": [
+				{
+					"name": "get blogs",
+					"request": {
+						"url": "http://{{url}}/api/blogs",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE post blog",
+					"request": {
+						"url": "http://{{url}}/api/blogs",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"23rd July 2017\",\r\n    \"storyName\":\"test\",\r\n    \"storyText\":\"test\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "READ get blog (id)",
+					"request": {
+						"url": "http://{{url}}/api/blogs/597491e8e460351c6a074507",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE put blog (id)",
+					"request": {
+						"url": "http://{{url}}/api/blogs/5972d15334cc547428ca5f5d",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"date\": \"22nd July 2017\",\n        \"storyName\": \"Updates\",\n        \"storyText\": \"So I've replaced the back end for this website with a NodeJS mongo REST CRUD controller. At the moment I've taken down the live 7Habits site as it was using 100% CPU. It's apparently a disfunction of running MeteorJS with the latest NodeJS. Also, my PersonalSpendingAnalysis Windows Desktop C# tool is nearing completion in that there is nothing more I need from it. In 28 hours, I've added charting, reporting (data mining), Json export backup, full crud, autocategorization, PDF export, SQL server backend. The SPA on this site, I've published as Shake (took 6 hours to write), and the backend is published too. There is a bit more to do on the SPA - login to authorise writing etc. After that I guess the priority will be updating F00 my 16 bit CPU design.\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE blog (id)",
+					"request": {
+						"url": "http://{{url}}/api/blogs/59749743abe91f1d77bbd2f1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "task",
+			"description": "",
+			"item": [
+				{
+					"name": "get tasks",
+					"request": {
+						"url": "http://{{url}}/api/tasks",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE post tasks",
+					"request": {
+						"url": "http://{{url}}/api/tasks",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"23rd July 2017\",\r\n    \"storyName\":\"test\",\r\n    \"storyText\":\"test\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "READ get tasks(id)",
+					"request": {
+						"url": "http://{{url}}/api/tasks/597491e8e460351c6a074507",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE put tasks (id)",
+					"request": {
+						"url": "http://{{url}}/api/tasks/5972d15334cc547428ca5f5d",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"date\": \"22nd July 2017\",\n        \"storyName\": \"Updates\",\n        \"storyText\": \"So I've replaced the back end for this website with a NodeJS mongo REST CRUD controller. At the moment I've taken down the live 7Habits site as it was using 100% CPU. It's apparently a disfunction of running MeteorJS with the latest NodeJS. Also, my PersonalSpendingAnalysis Windows Desktop C# tool is nearing completion in that there is nothing more I need from it. In 28 hours, I've added charting, reporting (data mining), Json export backup, full crud, autocategorization, PDF export, SQL server backend. The SPA on this site, I've published as Shake (took 6 hours to write), and the backend is published too. There is a bit more to do on the SPA - login to authorise writing etc. After that I guess the priority will be updating F00 my 16 bit CPU design.\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE tasks (id)",
+					"request": {
+						"url": "http://{{url}}/api/tasks/59749743abe91f1d77bbd2f1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bank",
+			"description": "",
+			"item": [
+				{
+					"name": "get banks",
+					"request": {
+						"url": "http://{{url}}/api/banks",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE banks",
+					"request": {
+						"url": "http://{{url}}/api/banks",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transactionDate\":\"2017/08/17\",\r\n    \"amount\":1200,\r\n    \"notes\":\"this and that\",\r\n    \"userId\" : \"59764f91f3a845408b1fae5e\",\r\n    \"categoryId\" : \"adadsadsads\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "READ get bank (id)",
+					"request": {
+						"url": "http://{{url}}/api/banks/598213913672f26778ceb202",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE put bank (id)",
+					"request": {
+						"url": "http://{{url}}/api/banks/59821ccc69e3156b8dcadf81",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transactionDate\":\"2017/08/17\",\n    \"amount\":1200,\n    \"notes\":\"this and that\",\n    \"userId\" : \"{{userId}}\",\n    \"categoryId\" : \"adadsadsads\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE bank (id)",
+					"request": {
+						"url": "http://{{url}}/api/banks/598216ea024ece68c5b8c195",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"description": "",
+			"item": [
+				{
+					"name": "LIST logins",
+					"request": {
+						"url": "http://{{url}}/api/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE login",
+					"request": {
+						"url": "http://{{url}}/api/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"usernameInHere\",\r\n    \"password\":\"passwordInHere\",\r\n    \"admin\":\"false\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "READ login (id)",
+					"request": {
+						"url": "http://{{url}}/api/users/59764f91f3a845408b1fae5e",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE login (id)",
+					"request": {
+						"url": "http://{{url}}/api/users/59764f91f3a845408b1fae5e",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"usernameInHere\",\r\n    \"password\":\"passwordInHere\",\r\n    \"roles\":\"blog-editor project-editor task-editor user-editor kanbanslot-editor bank-editor\",\r\n    \"admin\": true\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE login (id)",
+					"request": {
+						"url": "http://{{url}}/api/users/59749743abe91f1d77bbd2f1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = responseBody;",
+									"var token = JSON.parse(jsonData);",
+									"postman.setEnvironmentVariable(\"jwt\", token.token);",
+									"postman.setEnvironmentVariable(\"userId\", token.userId);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/api/auth",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "",
+								"value": "",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"{{username}}\",\r\n    \"password\":\"{{password}}\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "projects",
+			"description": "",
+			"item": [
+				{
+					"name": "get projects",
+					"request": {
+						"url": "http://{{url}}/api/projects",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE project",
+					"request": {
+						"url": "http://{{url}}/api/projects",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\": \"test\",\n        \"description\": \"test\",\n        \"year\": \"2017\",\n        \"url\": \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.html\",\n        \"codeUrl\": \"https://gitlab.com/hipparchus2000/mividaloca\",\n        \"pdfUrl\" : \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.pdf\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "READ project (id)",
+					"request": {
+						"url": "http://{{url}}/api/projects/5962547a2e0ac29b3b33dd48",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE project (id)",
+					"request": {
+						"url": "http://{{url}}/api/projects/5962547a2e0ac29b3b33dd49",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Personal Finance Manager\",\n    \"description\": \"C# Windows Forms Application for analysing my personal spending and budgeting (code is free on Gitlab) written in 28 hours including SQL back end, PDF reporting, Charting, Json export, Data Mining.\",\n    \"year\": \"2017\",\n    \"url\": \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.html\",\n    \"codeUrl\": \"https://gitlab.com/hipparchus2000/mividaloca\",\n    \"pdfUrl\": \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.pdf\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE project (id) one param only",
+					"request": {
+						"url": "http://{{url}}/api/projects/5962547a2e0ac29b3b33dd4b",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\":\"16\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE project (id)",
+					"request": {
+						"url": "http://{{url}}/api/projects/5974a429d7936623d277280a",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
