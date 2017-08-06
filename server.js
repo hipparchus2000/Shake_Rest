@@ -1,4 +1,4 @@
-
+const mongoConnectionString=process.env.DB_URL;
 const express = require("express"); // express framework
 const app = express();
 const port = process.env.PORT || 13001;
@@ -15,13 +15,13 @@ const Bankcategory =require ("./api/models/bankcategoryModel");
 
 const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/projects"); // connect to MongoDB
+mongoose.connect(mongoConnectionString); // connect to MongoDB
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 var cors = require('cors');
 
-app.use(cors({origin: 'http://www.talkisbetter.com'}));
+app.use(cors({origin: 'https://dev.talkisbetter.com'}));
 let loginRoutes = require("./api/routes/loginRoute");
 let projectRoutes = require("./api/routes/projectsRoute");
 let blogRoutes = require("./api/routes/blogRoute");
