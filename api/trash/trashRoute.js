@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let trashList = require('../controllers/trashController');
+	let trashList = require('./trashController');
 	app.route('/trash')
 		.get(trashList.getTrashs) 
 		.post(trashList.createTrash);
