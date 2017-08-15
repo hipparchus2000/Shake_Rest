@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Project = mongoose.model("Projects");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "project-editor";
 
 exports.getProjects = (req, res) => {

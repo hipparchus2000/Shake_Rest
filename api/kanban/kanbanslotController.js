@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Kanbanslot = mongoose.model("Kanbanslots");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "kanbanslot-editor";
 
 exports.getKanbanslots = (req, res) => {

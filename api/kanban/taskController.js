@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Task = mongoose.model("Tasks");
 const Slot = mongoose.model("Kanbanslots");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "task-editor";
 
 exports.getTasks = (req, res) => {

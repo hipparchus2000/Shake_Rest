@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Bank = mongoose.model("Banks");
 const Slot = mongoose.model("Kanbanslots");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "bank-editor";
 
 exports.getBanks = (req, res) => {

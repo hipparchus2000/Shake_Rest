@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Blog = mongoose.model("Blogs");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "blog-editor";
 
 exports.getBlogs = (req, res) => {
