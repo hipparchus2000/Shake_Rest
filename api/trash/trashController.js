@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Trash = mongoose.model("Trashs");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "trash-editor";
 
 exports.getTrashs = (req, res) => {

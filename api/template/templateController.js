@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Template = mongoose.model("Templates");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "template-editor";
 
 exports.getTemplates = (req, res) => {
