@@ -6,7 +6,7 @@ let BankSchema = new Schema({
 	Notes: { type: String },
 	userId: { type: String },
 	CategoryId: { type: String },
-	id { type: String },
+	//id { type: String },
 	amount { type: Number },
     SubCategory { type: String },
     AccountId { type: String },
