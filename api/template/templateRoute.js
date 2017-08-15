@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let templateList = require('./templatesController');
+	let templateList = require('./templateController');
 	app.route('/templates')
 		.get(templateList.getTemplates) 
 		.post(templateList.createTemplate);
