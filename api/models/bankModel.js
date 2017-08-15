@@ -6,12 +6,12 @@ let BankSchema = new Schema({
 	Notes: { type: String },
 	userId: { type: String },
 	CategoryId: { type: String },
-	//id { type: String },
-	amount { type: Number },
-    SubCategory { type: String },
-    AccountId { type: String },
-    SHA256 { type: String },
-    ManualCategory { type: Boolean }
+	Id: { type: String },
+	amount: { type: Number },
+    SubCategory: { type: String },
+    AccountId: { type: String },
+    SHA256: { type: String },
+    ManualCategory: { type: Boolean }
 	
 });
 module.exports = mongoose.model('Banks', BankSchema);
