@@ -27,5 +27,5 @@ let TrashSchema = new Schema({
 		type: Number
 	}
 });
-module.exports = mongoose.model('Trash', TrashSchema);
+module.exports = mongoose.model('Trashs', TrashSchema);
 
