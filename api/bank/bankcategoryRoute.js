@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let Bankcategory = require('../controllers/bankcategoryController');
+	let Bankcategory = require('./bankcategoryController');
 	app.route('/bankcategorys')
 		.get(Bankcategory.getBankcategorys) 
 		.post(Bankcategory.createBankcategory);
