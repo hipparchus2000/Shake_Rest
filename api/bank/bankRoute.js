@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let Bank = require('../controllers/bankController');
+	let Bank = require('./bankController');
 	app.route('/banks')
 		.get(Bank.getBanks) 
 		.post(Bank.createBank);

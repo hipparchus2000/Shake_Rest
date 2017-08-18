@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let loginList = require('../controllers/loginController');
+	let loginList = require('./loginController');
 	app.route('/auth')
 		.post(loginList.login);
 	app.route('/users')
