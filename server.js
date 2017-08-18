@@ -46,6 +46,12 @@ const Trash =require ("./api/trash/trashModel");
 let trashRoutes = require("./api/trash/trashRoute");
 trashRoutes(app);
 
+//Part
+const Part =require ("./api/part/partModel");
+let partRoutes = require("./api/part/partRoute");
+partRoutes(app);
+
+
 //Template
 //const Template =require ("./api/template/templateModel");
 //let templateRoutes = require("./api/template/templateRoute");
