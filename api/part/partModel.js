@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-let $capitialisedInitialVersionSchema = new Schema({
+let PartSchema = new Schema({
 	order: {
 		type: String,
 	},
 	title: {
 		type: String,
-		Required: '$capitialisedInitialVersion Name is required!'
+		Required: 'Part Name is required!'
 	},
 	description: {
 		type: String
@@ -24,5 +24,5 @@ let $capitialisedInitialVersionSchema = new Schema({
 		type: String
 	}
 });
-module.exports = mongoose.model('$capitialisedInitialVersions', $capitialisedInitialVersionSchema);
+module.exports = mongoose.model('Parts', PartSchema);
 

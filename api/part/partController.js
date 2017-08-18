@@ -1,69 +1,69 @@
 const mongoose = require("mongoose");
-const $capitialisedInitialVersion = mongoose.model("$capitialisedInitialVersions");
+const Part = mongoose.model("Parts");
 const ShakeAuth = require("../auth/shakeAuth");
-const editorRole = "$1-editor";
+const editorRole = "part-editor";
 
-exports.get$capitialisedInitialVersions = (req, res) => {
-	$capitialisedInitialVersion.find({}, (err, $capitialisedInitialVersion) => {
+exports.getParts = (req, res) => {
+	Part.find({}, (err, Part) => {
 		if (err)
 			res.send(err);
-		res.json($capitialisedInitialVersion);
+		res.json(Part);
 	}).sort( { order: 1 } );
 };
 
-exports.read$capitialisedInitialVersion = (req, res) => {
+exports.readPart = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	$capitialisedInitialVersion.findById(id, (err, $capitialisedInitialVersion) => {
+	Part.findById(id, (err, Part) => {
 		if (err)
 			res.send(err);
-		res.json($capitialisedInitialVersion);
+		res.json(Part);
 	});
 };
 
 
-exports.create$capitialisedInitialVersion = (req, res) => {
+exports.createPart = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	let new$capitialisedInitialVersion = new $capitialisedInitialVersion(req.body);
-	new$capitialisedInitialVersion.save( (err, $capitialisedInitialVersion) => {
+	let newPart = new Part(req.body);
+	newPart.save( (err, Part) => {
 		if (err)
 			res.send(err);
-		res.json($capitialisedInitialVersion);
+		res.json(Part);
 	});
 };
 
-exports.update$capitialisedInitialVersion = (req, res) => {
+exports.updatePart = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	$capitialisedInitialVersion.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, $capitialisedInitialVersion) => {
+	Part.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Part) => {
 		if (err) 
 			res.send(err);
-		res.json($capitialisedInitialVersion);
+		res.json(Part);
 	});
 };
 
-exports.delete$capitialisedInitialVersion = (req, res) => {
+exports.deletePart = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	$capitialisedInitialVersion.remove({
+	Part.remove({
 		_id:	id 
-		}, (err, $capitialisedInitialVersion) => {
+		}, (err, Part) => {
 			if (err)
 	res.send(err);
-			res.json({ message: '$capitialisedInitialVersion deleted!!' });
+			res.json({ message: 'Part deleted!!' });
 	});
 };
 
