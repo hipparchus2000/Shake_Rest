@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Bankcategory = mongoose.model("Bankcategorys");
 const Slot = mongoose.model("Kanbanslots");
-const ShakeAuth = require("./shakeAuth");
+const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "bankcategory-editor";
 
 exports.getBankcategorys = (req, res) => {

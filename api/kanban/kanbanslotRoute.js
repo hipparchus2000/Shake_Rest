@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let Kanbanslot = require('../controllers/kanbanslotController');
+	let Kanbanslot = require('./kanbanslotController');
 	app.route('/kanbanslots')
 		.get(Kanbanslot.getKanbanslots) 
 		.post(Kanbanslot.createKanbanslot);

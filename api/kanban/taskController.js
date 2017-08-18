@@ -1,54 +1,55 @@
 const mongoose = require("mongoose");
-const Blog = mongoose.model("Blogs");
-const ShakeAuth = require("./shakeAuth");
-const editorRole = "blog-editor";
+const Task = mongoose.model("Tasks");
+const Slot = mongoose.model("Kanbanslots");
+const ShakeAuth = require("../auth/shakeAuth");
+const editorRole = "task-editor";
 
-exports.getBlogs = (req, res) => {
-	Blog.find({}, (err, Blog) => {
+exports.getTasks = (req, res) => {
+	Task.find({}, (err, Task) => {
 		if (err)
 			res.send(err);
-		res.json(Blog);
+		res.json(Task);		
 	});
 };
 
-exports.createBlog = (req, res) => {
-	let newBlog = new Blog(req.body);
+exports.createTask = (req, res) => {
+	let newTask = new Task(req.body);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
-		return;		
+		return;
 	};
-	newBlog.save( (err, Blog) => {
+	newTask.save( (err, Task) => {
 		if (err)
 			res.send(err);
-		res.json(Blog);
+		res.json(Task);
 	});
 };
 
-exports.readBlog = (req, res) => {
+exports.readTask = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Blog.findById(id, (err, Blog) => {
+	Task.findById(id, (err, Task) => {
 		if (err)
 			res.send(err);
-		res.json(Blog);
+		res.json(Task);
 	});
 };
 
-exports.updateBlog = (req, res) => {
+exports.updateTask = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Blog.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Blog) => {
+	Task.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Task) => {
 		if (err) 
 			res.send(err);
-		res.json(Blog);
+		res.json(Task);
 	});
 };
 
-exports.deleteBlog = (req, res) => {
+exports.deleteTask = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
@@ -56,12 +57,12 @@ exports.deleteBlog = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	console.log('req param id = ',id);
-	Blog.remove({
+	Task.remove({
 		_id: id
-		}, (err, Blog) => {
+		}, (err, Task) => {
 			if (err)
 	res.send(err);
-			res.json({ message: 'Blog deleted!!' });
+			res.json({ message: 'Task deleted!!' });
 	});
 };
 
