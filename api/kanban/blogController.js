@@ -8,7 +8,7 @@ exports.getBlogs = (req, res) => {
 		if (err)
 			res.send(err);
 		res.json(Blog);
-	});
+	}).reverse();
 };
 
 exports.createBlog = (req, res) => {
