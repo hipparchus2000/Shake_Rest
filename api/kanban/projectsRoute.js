@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let projectList = require('../controllers/projectsController');
+	let projectList = require('./projectsController');
 	app.route('/projects')
 		.get(projectList.getProjects) 
 		.post(projectList.createProject);

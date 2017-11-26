@@ -1,69 +1,69 @@
 const mongoose = require("mongoose");
-const Project = mongoose.model("Projects");
-const ShakeAuth = require("./shakeAuth");
-const editorRole = "project-editor";
+const Template = mongoose.model("Templates");
+const ShakeAuth = require("../auth/shakeAuth");
+const editorRole = "template-editor";
 
-exports.getProjects = (req, res) => {
-	Project.find({}, (err, Project) => {
+exports.getTemplates = (req, res) => {
+	Template.find({}, (err, Template) => {
 		if (err)
 			res.send(err);
-		res.json(Project);
+		res.json(Template);
 	}).sort( { order: 1 } );
 };
 
-exports.readProject = (req, res) => {
+exports.readTemplate = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Project.findById(id, (err, Project) => {
+	Template.findById(id, (err, Template) => {
 		if (err)
 			res.send(err);
-		res.json(Project);
+		res.json(Template);
 	});
 };
 
 
-exports.createProject = (req, res) => {
+exports.createTemplate = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	let newProject = new Project(req.body);
-	newProject.save( (err, Project) => {
+	let newTemplate = new Template(req.body);
+	newTemplate.save( (err, Template) => {
 		if (err)
 			res.send(err);
-		res.json(Project);
+		res.json(Template);
 	});
 };
 
-exports.updateProject = (req, res) => {
+exports.updateTemplate = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Project.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Project) => {
+	Template.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Template) => {
 		if (err) 
 			res.send(err);
-		res.json(Project);
+		res.json(Template);
 	});
 };
 
-exports.deleteProject = (req, res) => {
+exports.deleteTemplate = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Project.remove({
+	Template.remove({
 		_id:	id 
-		}, (err, Project) => {
+		}, (err, Template) => {
 			if (err)
 	res.send(err);
-			res.json({ message: 'Project deleted!!' });
+			res.json({ message: 'Template deleted!!' });
 	});
 };
 

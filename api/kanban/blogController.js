@@ -1,54 +1,54 @@
 const mongoose = require("mongoose");
-const Kanbanslot = mongoose.model("Kanbanslots");
-const ShakeAuth = require("./shakeAuth");
-const editorRole = "kanbanslot-editor";
+const Blog = mongoose.model("Blogs");
+const ShakeAuth = require("../auth/shakeAuth");
+const editorRole = "blog-editor";
 
-exports.getKanbanslots = (req, res) => {
-	Kanbanslot.find({}, (err, Kanbanslot) => {
+exports.getBlogs = (req, res) => {
+	Blog.find({}).sort({date: -1}).exec(function(err, Blog) {
 		if (err)
 			res.send(err);
-		res.json(Kanbanslot);
+		res.json(Blog);
 	});
 };
 
-exports.createKanbanslot = (req, res) => {
-	let newKanbanslot = new Kanbanslot(req.body);
+exports.createBlog = (req, res) => {
+	let newBlog = new Blog(req.body);
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
+		res.json({ authorizationFailed: true });
+		return;		
+	};
+	newBlog.save( (err, Blog) => {
+		if (err)
+			res.send(err);
+		res.json(Blog);
+	});
+};
+
+exports.readBlog = (req, res) => {
+	var urlArray = req.url.split('/');
+	var id = urlArray[urlArray.length-1];
+	Blog.findById(id, (err, Blog) => {
+		if (err)
+			res.send(err);
+		res.json(Blog);
+	});
+};
+
+exports.updateBlog = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
-	newKanbanslot.save( (err, Kanbanslot) => {
-		if (err)
-			res.send(err);
-		res.json(Kanbanslot);
-	});
-};
-
-exports.readKanbanslot = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Kanbanslot.findById(id, (err, Kanbanslot) => {
-		if (err)
-			res.send(err);
-		res.json(Kanbanslot);
-	});
-};
-
-exports.updateKanbanslot = (req, res) => {
-	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
-		res.json({ authorizationFailed: true });
-		return;
-		};
-	var urlArray = req.url.split('/');
-	var id = urlArray[urlArray.length-1];
-	Kanbanslot.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Kanbanslot) => {
+	Blog.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Blog) => {
 		if (err) 
 			res.send(err);
-		res.json(Kanbanslot);
+		res.json(Blog);
 	});
 };
 
-exports.deleteKanbanslot = (req, res) => {
+exports.deleteBlog = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
@@ -56,12 +56,12 @@ exports.deleteKanbanslot = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	console.log('req param id = ',id);
-	Kanbanslot.remove({
+	Blog.remove({
 		_id: id
-		}, (err, Kanbanslot) => {
+		}, (err, Blog) => {
 			if (err)
 	res.send(err);
-			res.json({ message: 'Kanbanslot deleted!!' });
+			res.json({ message: 'Blog deleted!!' });
 	});
 };
 

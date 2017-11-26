@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let Task = require('../controllers/taskController');
+	let Task = require('./taskController');
 	app.route('/tasks')
 		.get(Task.getTasks) 
 		.post(Task.createTask);

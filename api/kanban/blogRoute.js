@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	let blogList = require('../controllers/blogController');
+	let blogList = require('./blogController');
 	app.route('/blogs')
 		.get(blogList.getBlogs) 
 		.post(blogList.createBlog);

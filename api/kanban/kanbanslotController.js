@@ -1,55 +1,54 @@
 const mongoose = require("mongoose");
-const Task = mongoose.model("Tasks");
-const Slot = mongoose.model("Kanbanslots");
-const ShakeAuth = require("./shakeAuth");
-const editorRole = "task-editor";
+const Kanbanslot = mongoose.model("Kanbanslots");
+const ShakeAuth = require("../auth/shakeAuth");
+const editorRole = "kanbanslot-editor";
 
-exports.getTasks = (req, res) => {
-	Task.find({}, (err, Task) => {
+exports.getKanbanslots = (req, res) => {
+	Kanbanslot.find({}, (err, Kanbanslot) => {
 		if (err)
 			res.send(err);
-		res.json(Task);		
+		res.json(Kanbanslot);
 	});
 };
 
-exports.createTask = (req, res) => {
-	let newTask = new Task(req.body);
+exports.createKanbanslot = (req, res) => {
+	let newKanbanslot = new Kanbanslot(req.body);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
 	};
-	newTask.save( (err, Task) => {
+	newKanbanslot.save( (err, Kanbanslot) => {
 		if (err)
 			res.send(err);
-		res.json(Task);
+		res.json(Kanbanslot);
 	});
 };
 
-exports.readTask = (req, res) => {
+exports.readKanbanslot = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Task.findById(id, (err, Task) => {
+	Kanbanslot.findById(id, (err, Kanbanslot) => {
 		if (err)
 			res.send(err);
-		res.json(Task);
+		res.json(Kanbanslot);
 	});
 };
 
-exports.updateTask = (req, res) => {
+exports.updateKanbanslot = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
-	};
+		};
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
-	Task.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Task) => {
+	Kanbanslot.findOneAndUpdate({"_id":id}, req.body, { new: true }, (err, Kanbanslot) => {
 		if (err) 
 			res.send(err);
-		res.json(Task);
+		res.json(Kanbanslot);
 	});
 };
 
-exports.deleteTask = (req, res) => {
+exports.deleteKanbanslot = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
@@ -57,12 +56,12 @@ exports.deleteTask = (req, res) => {
 	var urlArray = req.url.split('/');
 	var id = urlArray[urlArray.length-1];
 	console.log('req param id = ',id);
-	Task.remove({
+	Kanbanslot.remove({
 		_id: id
-		}, (err, Task) => {
+		}, (err, Kanbanslot) => {
 			if (err)
 	res.send(err);
-			res.json({ message: 'Task deleted!!' });
+			res.json({ message: 'Kanbanslot deleted!!' });
 	});
 };
 

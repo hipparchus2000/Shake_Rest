@@ -14,7 +14,7 @@
 				{
 					"name": "get blogs",
 					"request": {
-						"url": "http://{{url}}/api/blogs",
+						"url": "http://{{url}}/{{api}}/blogs",
 						"method": "GET",
 						"header": [
 							{
@@ -34,7 +34,7 @@
 				{
 					"name": "CREATE post blog",
 					"request": {
-						"url": "http://{{url}}/api/blogs",
+						"url": "http://{{url}}/{{api}}/blogs",
 						"method": "POST",
 						"header": [
 							{
@@ -59,7 +59,7 @@
 				{
 					"name": "READ get blog (id)",
 					"request": {
-						"url": "http://{{url}}/api/blogs/597491e8e460351c6a074507",
+						"url": "http://{{url}}/{{api}}/blogs/597491e8e460351c6a074507",
 						"method": "GET",
 						"header": [
 							{
@@ -79,7 +79,7 @@
 				{
 					"name": "UPDATE put blog (id)",
 					"request": {
-						"url": "http://{{url}}/api/blogs/5972d15334cc547428ca5f5d",
+						"url": "http://{{url}}/{{api}}/blogs/5972d15334cc547428ca5f5d",
 						"method": "PUT",
 						"header": [
 							{
@@ -104,7 +104,7 @@
 				{
 					"name": "DELETE blog (id)",
 					"request": {
-						"url": "http://{{url}}/api/blogs/59749743abe91f1d77bbd2f1",
+						"url": "http://{{url}}/{{api}}/blogs/59749743abe91f1d77bbd2f1",
 						"method": "DELETE",
 						"header": [
 							{
@@ -135,7 +135,7 @@
 				{
 					"name": "get tasks",
 					"request": {
-						"url": "http://{{url}}/api/tasks",
+						"url": "http://{{url}}/{{api}}/tasks",
 						"method": "GET",
 						"header": [
 							{
@@ -155,7 +155,7 @@
 				{
 					"name": "CREATE post tasks",
 					"request": {
-						"url": "http://{{url}}/api/tasks",
+						"url": "http://{{url}}/{{api}}/tasks",
 						"method": "POST",
 						"header": [
 							{
@@ -180,7 +180,7 @@
 				{
 					"name": "READ get tasks(id)",
 					"request": {
-						"url": "http://{{url}}/api/tasks/597491e8e460351c6a074507",
+						"url": "http://{{url}}/{{api}}/tasks/597491e8e460351c6a074507",
 						"method": "GET",
 						"header": [
 							{
@@ -200,7 +200,7 @@
 				{
 					"name": "UPDATE put tasks (id)",
 					"request": {
-						"url": "http://{{url}}/api/tasks/5972d15334cc547428ca5f5d",
+						"url": "http://{{url}}/{{api}}/tasks/5972d15334cc547428ca5f5d",
 						"method": "PUT",
 						"header": [
 							{
@@ -225,7 +225,7 @@
 				{
 					"name": "DELETE tasks (id)",
 					"request": {
-						"url": "http://{{url}}/api/tasks/59749743abe91f1d77bbd2f1",
+						"url": "http://{{url}}/{{api}}/tasks/59749743abe91f1d77bbd2f1",
 						"method": "DELETE",
 						"header": [
 							{
@@ -256,7 +256,7 @@
 				{
 					"name": "get banks",
 					"request": {
-						"url": "http://{{url}}/api/banks",
+						"url": "https://{{url}}/{{api}}/banks",
 						"method": "GET",
 						"header": [
 							{
@@ -267,6 +267,11 @@
 							{
 								"key": "jwt",
 								"value": "{{jwt}}",
+								"description": ""
+							},
+							{
+								"key": "userId",
+								"value": "59764f91f3a845408b1fae5e",
 								"description": ""
 							}
 						],
@@ -281,7 +286,7 @@
 				{
 					"name": "CREATE banks",
 					"request": {
-						"url": "http://{{url}}/api/banks",
+						"url": "http://{{url}}/{{api}}/banks",
 						"method": "POST",
 						"header": [
 							{
@@ -297,7 +302,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"transactionDate\":\"2017/08/17\",\r\n    \"amount\":1200,\r\n    \"notes\":\"this and that\",\r\n    \"userId\" : \"59764f91f3a845408b1fae5e\",\r\n    \"categoryId\" : \"adadsadsads\"\r\n}\r\n"
+							"raw": "{\r\n    \"transactionDate\":\"2016-09-23T00:00:00\",\r\n    \"Notes\":\"AABBCC1123\",\r\n    \"userId\" : \"59764f91f3a845408b1fae5e\",\r\n    \"CategoryId\" : \"24234234234\",\r\n    \"Id\": \"234234234234\",\r\n    \"amount\": 1200,\r\n    \"SubCategory\": \"ABC\",\r\n    \"AccountId\": \"\",\r\n    \"SHA256\":\"ASDASDASDADS\",\r\n    \"ManualCategory\" : true\r\n}\r\n"
 						},
 						"description": ""
 					},
@@ -306,7 +311,7 @@
 				{
 					"name": "READ get bank (id)",
 					"request": {
-						"url": "http://{{url}}/api/banks/598213913672f26778ceb202",
+						"url": "http://{{url}}/{{api}}/banks/598213913672f26778ceb202",
 						"method": "GET",
 						"header": [
 							{
@@ -331,7 +336,7 @@
 				{
 					"name": "UPDATE put bank (id)",
 					"request": {
-						"url": "http://{{url}}/api/banks/59821ccc69e3156b8dcadf81",
+						"url": "http://{{url}}/{{api}}/banks/59821ccc69e3156b8dcadf81",
 						"method": "PUT",
 						"header": [
 							{
@@ -356,7 +361,7 @@
 				{
 					"name": "DELETE bank (id)",
 					"request": {
-						"url": "http://{{url}}/api/banks/598216ea024ece68c5b8c195",
+						"url": "http://{{url}}/{{api}}/banks/598216ea024ece68c5b8c195",
 						"method": "DELETE",
 						"header": [
 							{
@@ -387,7 +392,7 @@
 				{
 					"name": "LIST logins",
 					"request": {
-						"url": "http://{{url}}/api/users",
+						"url": "http://{{url}}/{{api}}/users",
 						"method": "GET",
 						"header": [
 							{
@@ -396,8 +401,8 @@
 								"description": ""
 							},
 							{
-								"key": "jwt",
-								"value": "{{jwt}}",
+								"key": "token",
+								"value": "{{token}}",
 								"description": ""
 							}
 						],
@@ -412,7 +417,7 @@
 				{
 					"name": "CREATE login",
 					"request": {
-						"url": "http://{{url}}/api/users",
+						"url": "http://{{url}}/{{api}}/users",
 						"method": "POST",
 						"header": [
 							{
@@ -421,14 +426,14 @@
 								"description": ""
 							},
 							{
-								"key": "jwt",
-								"value": "{{jwt}}",
+								"key": "token",
+								"value": "{{token}}",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"usernameInHere\",\r\n    \"password\":\"passwordInHere\",\r\n    \"admin\":\"false\"\r\n}\r\n"
+							"raw": "{\r\n    \"username\":\"{{userId}}\",\r\n    \"password\":\"{{password}}\",\r\n    \"admin\":true\r\n}\r\n"
 						},
 						"description": ""
 					},
@@ -437,7 +442,7 @@
 				{
 					"name": "READ login (id)",
 					"request": {
-						"url": "http://{{url}}/api/users/59764f91f3a845408b1fae5e",
+						"url": "http://{{url}}/{{api}}/users/59764f91f3a845408b1fae5e",
 						"method": "GET",
 						"header": [
 							{
@@ -462,7 +467,7 @@
 				{
 					"name": "UPDATE login (id)",
 					"request": {
-						"url": "http://{{url}}/api/users/59764f91f3a845408b1fae5e",
+						"url": "http://{{url}}/{{api}}/users/59764f91f3a845408b1fae5e",
 						"method": "PUT",
 						"header": [
 							{
@@ -471,14 +476,14 @@
 								"description": ""
 							},
 							{
-								"key": "jwt",
-								"value": "{{jwt}}",
+								"key": "token",
+								"value": "{{token}}",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"usernameInHere\",\r\n    \"password\":\"passwordInHere\",\r\n    \"roles\":\"blog-editor project-editor task-editor user-editor kanbanslot-editor bank-editor\",\r\n    \"admin\": true\r\n}"
+							"raw": "{\r\n    \"username\":\"{{username}}\",\r\n    \"password\":\"{{password}}}}\",\r\n    \"roles\":\"blog-editor project-editor task-editor user-editor kanbanslot-editor bank-editor trash-editor part-editor\",\r\n    \"admin\": true\r\n}"
 						},
 						"description": ""
 					},
@@ -487,7 +492,7 @@
 				{
 					"name": "DELETE login (id)",
 					"request": {
-						"url": "http://{{url}}/api/users/59749743abe91f1d77bbd2f1",
+						"url": "http://{{url}}/{{api}}/users/59749743abe91f1d77bbd2f1",
 						"method": "DELETE",
 						"header": [
 							{
@@ -527,7 +532,7 @@
 						}
 					],
 					"request": {
-						"url": "http://{{url}}/api/auth",
+						"url": "https://{{url}}/{{api}}/auth",
 						"method": "POST",
 						"header": [
 							{
@@ -559,7 +564,7 @@
 				{
 					"name": "get projects",
 					"request": {
-						"url": "http://{{url}}/api/projects",
+						"url": "http://{{url}}/{{api}}/projects",
 						"method": "GET",
 						"header": [
 							{
@@ -579,7 +584,7 @@
 				{
 					"name": "CREATE project",
 					"request": {
-						"url": "http://{{url}}/api/projects",
+						"url": "http://{{url}}/{{api}}/projects",
 						"method": "POST",
 						"header": [
 							{
@@ -604,7 +609,7 @@
 				{
 					"name": "READ project (id)",
 					"request": {
-						"url": "http://{{url}}/api/projects/5962547a2e0ac29b3b33dd48",
+						"url": "http://{{url}}/{{api}}/projects/5962547a2e0ac29b3b33dd48",
 						"method": "GET",
 						"header": [
 							{
@@ -629,7 +634,7 @@
 				{
 					"name": "UPDATE project (id)",
 					"request": {
-						"url": "http://{{url}}/api/projects/5962547a2e0ac29b3b33dd49",
+						"url": "http://{{url}}/{{api}}/projects/5962547a2e0ac29b3b33dd49",
 						"method": "PUT",
 						"header": [
 							{
@@ -654,7 +659,7 @@
 				{
 					"name": "UPDATE project (id) one param only",
 					"request": {
-						"url": "http://{{url}}/api/projects/5962547a2e0ac29b3b33dd4b",
+						"url": "http://{{url}}/{{api}}/projects/5962547a2e0ac29b3b33dd4b",
 						"method": "PUT",
 						"header": [
 							{
@@ -679,7 +684,7 @@
 				{
 					"name": "DELETE project (id)",
 					"request": {
-						"url": "http://{{url}}/api/projects/5974a429d7936623d277280a",
+						"url": "http://{{url}}/{{api}}/projects/5974a429d7936623d277280a",
 						"method": "DELETE",
 						"header": [
 							{
@@ -696,6 +701,308 @@
 						"body": {
 							"mode": "raw",
 							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trash",
+			"description": "",
+			"item": [
+				{
+					"name": "LIST trashs",
+					"request": {
+						"url": "http://{{url}}/{{api}}/trashs",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE trash",
+					"request": {
+						"url": "http://{{url}}/{{api}}/trashs",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerUserId\": \"asd08908089\",\n    \"vendorUserId\": \"asads09808908\",\n    \"location\": \"Number 13, Fortestn terrace, SD23 KFD\",\n    \"numberOfBags\": 2,\n    \"maxNumberOfHoursFromNow\" : 12,\n    \"wasteType\":\"garden\",\n    \"paymentAmount\": 123.123,\n    \"paymentReferemce\": 12123132123\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "READ trashs(id)",
+					"request": {
+						"url": "http://{{url}}/{{api}}/trashs/5962547a2e0ac29b3b33dd48",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE trashs (id)",
+					"request": {
+						"url": "http://{{url}}/{{api}}/trashs/5962547a2e0ac29b3b33dd49",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Personal Finance Manager\",\n    \"description\": \"C# Windows Forms Application for analysing my personal spending and budgeting (code is free on Gitlab) written in 28 hours including SQL back end, PDF reporting, Charting, Json export, Data Mining.\",\n    \"year\": \"2017\",\n    \"url\": \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.html\",\n    \"codeUrl\": \"https://gitlab.com/hipparchus2000/mividaloca\",\n    \"pdfUrl\": \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.pdf\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE trashs (id) one param only",
+					"request": {
+						"url": "http://{{url}}/{{api}}/trashs/5962547a2e0ac29b3b33dd4b",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\":\"16\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE trashs (id)",
+					"request": {
+						"url": "http://{{url}}/{{api}}/trashs/5974a429d7936623d277280a",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "part",
+			"description": "",
+			"item": [
+				{
+					"name": "LIST parts",
+					"request": {
+						"url": "http://{{url}}/{{api}}/parts",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE parts",
+					"request": {
+						"url": "http://{{url}}/{{api}}/parts",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\": \"test\",\n        \"description\": \"test\",\n        \"year\": \"2017\",\n        \"url\": \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.html\",\n        \"codeUrl\": \"https://gitlab.com/hipparchus2000/mividaloca\",\n        \"pdfUrl\" : \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.pdf\",\n        \"userId\" : \"{{userId}}\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "READ parts(id)",
+					"request": {
+						"url": "http://{{url}}/{{api}}/parts/5962547a2e0ac29b3b33dd48",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n                \"date\":\"22nd July 2017\",\r\n                \"storyName\":\"Intel Movidius Neural Compute stick\",\r\n                \"storyText\":\"£50 gets you a vast amount of cognitive computing power in a tiny package!!   https://newsroom.intel.com/news/intel-democratizes-deep-learning-application-development-launch-movidius-neural-compute-stick/. Way to go Intel!\"\r\n        }\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE parts(id)",
+					"request": {
+						"url": "http://{{url}}/{{api}}/parts/5962547a2e0ac29b3b33dd49",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\": \"test\",\n        \"description\": \"test\",\n        \"year\": \"2017\",\n        \"url\": \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.html\",\n        \"codeUrl\": \"https://gitlab.com/hipparchus2000/mividaloca\",\n        \"pdfUrl\" : \"http://www.talkisbetter.com/personalSpendingAnalysis/personalSpendingAnalysis.pdf\",\n        \"userId\" : \"{{userId}}\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE parts(id) one param only",
+					"request": {
+						"url": "http://{{url}}/{{api}}/parts/5962547a2e0ac29b3b33dd4b",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"description\": \"test\",\n        \"userId\" : \"{{userId}}\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE parts(id)",
+					"request": {
+						"url": "http://{{url}}/{{api}}/parts/5974a429d7936623d277280a",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": ""
 					},
