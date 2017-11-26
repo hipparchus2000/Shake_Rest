@@ -4,7 +4,7 @@ const ShakeAuth = require("../auth/shakeAuth");
 const editorRole = "blog-editor";
 
 exports.getBlogs = (req, res) => {
-	Blog.find({}).sort('-date').exec(function(err, Blog) {
+	Blog.find({}).sort({new Date(date): -1}).exec(function(err, Blog) {
 		if (err)
 			res.send(err);
 		res.json(Blog);
