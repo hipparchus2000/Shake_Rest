@@ -8,7 +8,7 @@ exports.getBlogs = (req, res) => {
 		if (err)
 			res.send(err);
 		res.json(Blog);
-	}).reverse();
+	}).sort({date: 'desc'};
 };
 
 exports.createBlog = (req, res) => {
