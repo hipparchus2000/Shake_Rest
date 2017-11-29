@@ -18,10 +18,12 @@ exports.getBankcategorys = (req, res) => {
 
 exports.createBankcategory = (req, res) => {
 	let newBankcategory = new Bankcategory(req.body);
+	console.log("create new category");
 	if(newBankcategory.userId != ShakeAuth.getUserId(req)) {
 		res.json({ authorizationFailed: true });
 		return;
 	}
+	console.log("authorized ok");
 	console.log(newBankcategory);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
