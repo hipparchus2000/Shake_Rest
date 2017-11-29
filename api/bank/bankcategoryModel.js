@@ -7,6 +7,6 @@ let BankcategorySchema = new Schema({
 	Name: { type: String },
 	SearchString: { type: String }
 
-	});
+});
 module.exports = mongoose.model('Bankcategorys', BankcategorySchema);
 

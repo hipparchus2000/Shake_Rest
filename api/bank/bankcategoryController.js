@@ -17,7 +17,14 @@ exports.getBankcategorys = (req, res) => {
 };
 
 exports.createBankcategory = (req, res) => {
+	console.log("create new category");
 	let newBankcategory = new Bankcategory(req.body);
+	console.log("create new category");
+	if(newBankcategory.userId != ShakeAuth.getUserId(req)) {
+		res.json({ authorizationFailed: true });
+		return;
+	}
+	console.log(newBankcategory);
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
 		res.json({ authorizationFailed: true });
 		return;
@@ -28,6 +35,7 @@ exports.createBankcategory = (req, res) => {
 		res.json(Bankcategory);
 	});
 };
+
 
 exports.readBankcategory = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
