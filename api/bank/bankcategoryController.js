@@ -9,7 +9,7 @@ exports.getBankcategorys = (req, res) => {
 		res.json({ authorizationFailed: true });
 		return;
 	};
-	Bankcategory.find({ "userId": userId }, (err, Bankcategory) => {
+	Bankcategory.find({ userId: ShakeAuth.getUserId(req) }, (err, Bankcategory) => {
 		if (err)
 			res.send(err);
 		res.json(Bankcategory);		
