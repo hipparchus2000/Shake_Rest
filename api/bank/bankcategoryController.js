@@ -22,12 +22,18 @@ exports.createBankcategory = (req, res) => {
 		res.json({ authorizationFailed: true });
 		return;
 	}
+	console.log(newBankcategory);
+	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
+		res.json({ authorizationFailed: true });
+		return;
+	};
 	newBankcategory.save( (err, Bankcategory) => {
 		if (err)
 			res.send(err);
 		res.json(Bankcategory);
 	});
 };
+
 
 exports.readBankcategory = (req, res) => {
 	if (ShakeAuth.checkRequestForValidAuth(req,false,editorRole)==false) {
