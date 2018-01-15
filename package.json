@@ -7,5 +7,24 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jeff Davies",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bson": "^1.0.4",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "cors": "^2.8.4",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.2",
+    "jwt-decode": "^2.2.0",
+    "kareem": "^2.0.1",
+    "mocha": "^4.1.0",
+    "mongoose": "^4.13.9",
+    "mpath": "^0.3.0",
+    "npm-install-all": "^1.1.21",
+    "regexp-clone": "0.0.1",
+    "request": "^2.83.0",
+    "resolve-from": "^4.0.0",
+    "sliced": "^1.0.1"
+  }
 }

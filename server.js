@@ -4,6 +4,8 @@ const app = express();
 const port = process.env.PORT || 13001;
 const mongoose = require("mongoose");
 
+module.exports = app;
+
 const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoConnectionString); // connect to MongoDB
