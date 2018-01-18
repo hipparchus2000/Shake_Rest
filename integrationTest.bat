@@ -1,1 +1,1 @@
-"mocha tests\integrationTests\blog.js" 
+"mocha tests\integrationTests\blogIntegrationTest.js" 

@@ -7,36 +7,36 @@ var chaiHttp = require('chai-http');
 var mongoose = require("mongoose");
 
 var server = require('../../server');
-var Blog = require("../../api/kanban/blogsModel");
+var Kanbanslot = require("../../api/kanban/kanbanslotsModel");
 
 var should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('Blogs', function() {
+describe('Kanbanslots', function() {
 
-  Blog.collection.drop();
+  Kanbanslot.collection.drop();
 
   beforeEach(function(done){
-    var newBlog = new Blog({
+    var newKanbanslot = new Kanbanslot({
       storyName: 'testStoryName',
       storyText: 'testStoryText',
 			date: 'testDate',
 			order: 'testOrder'
     });
-    newBlog.save(function(err) {
+    newKanbanslot.save(function(err) {
       done();
     });
   });
   afterEach(function(done){
-    Blog.collection.drop();
+    Kanbanslot.collection.drop();
     done();
   });
 
 
-	it('should add a SINGLE blog on /blogs POST', function(done) {
+	it('should add a SINGLE kanbanslot on /kanbanslots POST', function(done) {
   chai.request(server)
-    .post('/blogs/')
+    .post('/kanbanslots/')
 		.set('token', 'testApiToken')
     .send({'storyName': 'testStoryName', 'storyText': 'testStoryText', 'date':'testDate', 'order':'testOrder' })
     .end(function(err, res){
@@ -47,16 +47,16 @@ describe('Blogs', function() {
     });
 	});
 	
-  it('should list a SINGLE blog on /blog/<id> GET', function(done) {
-    var newblog = new Blog({
+  it('should list a SINGLE kanbanslot on /kanbanslot/<id> GET', function(done) {
+    var newkanbanslot = new Kanbanslot({
 		order:'testOrder',
 		date:'testDate',
       storyName: 'testStoryName',
       storyText: 'testStoryText'
     });
-    newblog.save(function(err, data) {
+    newkanbanslot.save(function(err, data) {
       chai.request(server)
-        .get('/blogs/'+data.id)
+        .get('/kanbanslots/'+data.id)
         .end(function(err, res){
           res.should.have.status(200);
           res.should.be.json;
@@ -76,9 +76,9 @@ describe('Blogs', function() {
     });
   });
  	
-  it('should list ALL blogs on /blogs GET', function(done) {
+  it('should list ALL kanbanslots on /kanbanslots GET', function(done) {
   chai.request(server)
-    .get('/blogs/')
+    .get('/kanbanslots/')
     .end(function(err, res){
       res.should.have.status(200);
       res.should.be.json;
@@ -96,12 +96,12 @@ describe('Blogs', function() {
     });
 	});
   
-	it('should update a SINGLE blog on /blog/<id> PUT', function(done) {
+	it('should update a SINGLE kanbanslot on /kanbanslot/<id> PUT', function(done) {
 		chai.request(server)
-			.get('/blogs/')
+			.get('/kanbanslots/')
 			.end(function(err, res){
 				chai.request(server)
-					.put('/blogs/'+res.body[0]._id)
+					.put('/kanbanslots/'+res.body[0]._id)
 					.set('token', 'testApiToken')
 					.send({'storyName': 'Spider'})
 					.end(function(error, response){
@@ -113,12 +113,12 @@ describe('Blogs', function() {
 			});
 	});
 
-	it('should delete a SINGLE blog on /blog/<id> DELETE', function(done) {
+	it('should delete a SINGLE kanbanslot on /kanbanslot/<id> DELETE', function(done) {
 		chai.request(server)
-			.get('/blogs/')
+			.get('/kanbanslots/')
 			.end(function(err, res){
 				chai.request(server)
-					.delete('/blogs/'+res.body[0]._id)
+					.delete('/kanbanslots/'+res.body[0]._id)
 					.set('token', 'testApiToken')
 					.end(function(error, response){
 						response.should.have.status(200);

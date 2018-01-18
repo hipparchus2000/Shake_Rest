@@ -1,6 +1,11 @@
-const mongoose = require("mongoose");
-const Part = mongoose.model("Parts");
+var configToUse = process.env.config;
+if (configToUse == null || configToUse == "")
+	configToUse = "../../config/controllerDefaultConfig";
+const config = require(configToUse);
+const mongoose = require(config.mongoose);
 const ShakeAuth = require("../auth/shakeAuth");
+
+const Part = mongoose.model(config.Part);
 const editorRole = "part-editor";
 
 exports.getParts = (req, res) => {

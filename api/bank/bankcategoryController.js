@@ -1,7 +1,11 @@
-const mongoose = require("mongoose");
-const Bankcategory = mongoose.model("Bankcategorys");
-const Slot = mongoose.model("Kanbanslots");
+var configToUse = process.env.config;
+if (configToUse == null || configToUse == "")
+	configToUse = "../../config/controllerDefaultConfig";
+const config = require(configToUse);
+const mongoose = require(config.mongoose);
 const ShakeAuth = require("../auth/shakeAuth");
+
+const Bankcategory = mongoose.model(config.Bankcategory);
 const editorRole = "bankcategory-editor";
 
 exports.getBankcategorys = (req, res) => {

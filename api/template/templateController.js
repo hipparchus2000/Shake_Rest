@@ -1,6 +1,12 @@
-const mongoose = require("mongoose");
-const Template = mongoose.model("Templates");
+var configToUse = process.env.config;
+if (configToUse == null || configToUse == "")
+	configToUse = "../../config/controllerDefaultConfig";
+const config = require(configToUse);
+const mongoose = require(config.mongoose);
 const ShakeAuth = require("../auth/shakeAuth");
+
+
+const Template = mongoose.model(config.Template);
 const editorRole = "template-editor";
 
 exports.getTemplates = (req, res) => {

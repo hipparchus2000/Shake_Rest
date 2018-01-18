@@ -1,6 +1,11 @@
-const mongoose = require("mongoose");
-const Trash = mongoose.model("Trashs");
+var configToUse = process.env.config;
+if (configToUse == null || configToUse == "")
+	configToUse = "../../config/controllerDefaultConfig";
+const config = require(configToUse);
+const mongoose = require(config.mongoose);
 const ShakeAuth = require("../auth/shakeAuth");
+
+const Trash = mongoose.model(config.Trash);
 const editorRole = "trash-editor";
 
 exports.getTrashs = (req, res) => {

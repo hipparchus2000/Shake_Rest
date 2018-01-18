@@ -1,21 +1,21 @@
+
+console.log("starting imports");
 const mongoConnectionString=process.env.DB_URL;
 const express = require("express"); // express framework
 const app = express();
 const port = process.env.PORT || 13001;
-const mongoose = require("mongoose");
-
-module.exports = app;
-
 const bodyParser = require('body-parser');
+var cors = require('cors');
+const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoConnectionString); // connect to MongoDB
 
+module.exports = app;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-var cors = require('cors');
-
 app.use(cors({origin: 'https://dev.talkisbetter.com'}));
 
+console.log("starting routes");
 //Auth
 const Login =require ("./api/auth/loginModel");
 let loginRoutes = require("./api/auth/loginRoute");

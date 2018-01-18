@@ -1,6 +1,11 @@
-const mongoose = require("mongoose");
-const Blog = mongoose.model("Blogs");
+var configToUse = process.env.config;
+if (configToUse == null || configToUse == "")
+	configToUse = "../../config/controllerDefaultConfig";
+const config = require(configToUse);
+const mongoose = require(config.mongoose);
 const ShakeAuth = require("../auth/shakeAuth");
+
+const Blog = mongoose.model(config.Blog);
 const editorRole = "blog-editor";
 
 exports.getBlogs = (req, res) => {

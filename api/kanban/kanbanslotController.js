@@ -1,6 +1,11 @@
-const mongoose = require("mongoose");
-const Kanbanslot = mongoose.model("Kanbanslots");
+var configToUse = process.env.config;
+if (configToUse == null || configToUse == "")
+	configToUse = "../../config/controllerDefaultConfig";
+const config = require(configToUse);
+const mongoose = require(config.mongoose);
 const ShakeAuth = require("../auth/shakeAuth");
+
+const Kanbanslot = mongoose.model(config.Kanbanslot);
 const editorRole = "kanbanslot-editor";
 
 exports.getKanbanslots = (req, res) => {
