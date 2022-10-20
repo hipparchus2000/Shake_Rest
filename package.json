@@ -19,7 +19,7 @@
     "jwt-decode": "^2.2.0",
     "kareem": "^2.0.1",
     "mocha": "^4.1.0",
-    "mongoose": "^4.13.9",
+    "mongoose": "^4.13.21",
     "mpath": "^0.3.0",
     "npm-install-all": "^1.1.21",
     "regexp-clone": "0.0.1",
